@@ -9,7 +9,7 @@ import UIKit
 
 protocol filterViewControllerDelegate
 {
-    func confirmFilter(return_country : [String])
+    func confirmFilter(return_country : String)
     func resetFilter()
 }
 
@@ -21,8 +21,10 @@ class filterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var delegate:filterViewControllerDelegate!
 
     
-    var country_All: [String] = []
-    var country_Filter: [String] = []
+    var countryCode = ["US", "GB", "HK", "CN"]
+    var countryName = ["United States", "United Kingdom", "Hong Kong", "China"]
+    
+    var selectedCountry = "US"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +34,6 @@ class filterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         filter_tableview.dataSource = self
         filter_tableview.delegate = self
         
-        print("country_All")
-        print(country_All)
-        print("country_Filter")
-        print(country_Filter)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -54,7 +52,7 @@ class filterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return country_All.count
+            return countryCode.count
         } else if section == 1 {
             return 0
         } else {
@@ -65,9 +63,9 @@ class filterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell") as! customFilterTableCell
-            cell.label.text = "\(country_All[indexPath.row])"
+            cell.label.text = "\(countryName[indexPath.row])"
             
-            if country_Filter.contains(country_All[indexPath.row]){
+            if selectedCountry == countryCode[indexPath.row]{
                 cell.imageview_checkmark.isHidden = false
             } else {
                 cell.imageview_checkmark.isHidden = true
@@ -86,24 +84,18 @@ class filterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 0 {
-            if let index = country_Filter.firstIndex(of: country_All[indexPath.row]){
-                country_Filter.remove(at: index)
-            } else {
-                country_Filter.append(country_All[indexPath.row])
-            }
-            tableView.reloadRows(at: [indexPath], with: .none)
-        }
+        selectedCountry = countryCode[indexPath.row]
+        tableView.reloadData()
         
     }
     
     @IBAction func confirmButtonPressed(_ sender: Any) {
-        delegate.confirmFilter(return_country: country_Filter)
+        delegate.confirmFilter(return_country: selectedCountry)
         self.dismiss(animated: true)
     }
     
     @IBAction func resetBtnPressed(_ sender: Any) {
-        delegate.resetFilter()
+        delegate.confirmFilter(return_country: "US")
         self.dismiss(animated: true)
     }
 

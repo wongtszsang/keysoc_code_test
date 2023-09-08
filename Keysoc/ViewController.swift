@@ -17,7 +17,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     var songArray: [songObject] = []
-    var filteredSongArray: [songObject] = []
     
     var currentPage = -1
     var songPerPage = 20
@@ -25,8 +24,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var favSong: [songObject] = []
     var favSongID: [Int] = []
     
-    var country_All: [String] = []
-    var country_Filter: [String] = []
+    var selectedCountryCode = "US"
+    
     var keyword = ""
     
     
@@ -58,16 +57,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(retrieveMore){
-            return filteredSongArray.count + 1
+            return songArray.count + 1
         }
         else {
-            return filteredSongArray.count
+            return songArray.count
         }
             
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == filteredSongArray.count{
+        if indexPath.row == songArray.count{
             return 75
         } else {
             return 110
@@ -75,13 +74,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if(indexPath.row < filteredSongArray.count){
+        if(indexPath.row < songArray.count){
             let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! customTableCell
             
-            cell.label_trackName.text = "\(filteredSongArray[indexPath.row].trackName)"
-            cell.label_artistName.text = "\(filteredSongArray[indexPath.row].artistName)"
+            cell.label_trackName.text = "\(songArray[indexPath.row].trackName)"
+            cell.label_artistName.text = "\(songArray[indexPath.row].artistName)"
             
-            if(favSongID.contains(filteredSongArray[indexPath.row].trackId)){
+            if(favSongID.contains(songArray[indexPath.row].trackId)){
                 cell.imageview_fav.image = UIImage(systemName: "heart.fill")
                 cell.imageview_fav.tintColor = .red
             } else {
@@ -92,7 +91,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.button_fav.tag = indexPath.row
             
     //        cell.imageview_thumbnail.image = UIImage(named: "placeholder")
-            cell.imageview_thumbnail.downloadImage(link: filteredSongArray[indexPath.row].artworkUrl100, contentMode: .scaleAspectFit)
+            cell.imageview_thumbnail.downloadImage(link: songArray[indexPath.row].artworkUrl100, contentMode: .scaleAspectFit)
 
             return cell
         }
@@ -109,20 +108,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if(indexPath.row == filteredSongArray.count){
+        if(indexPath.row == songArray.count){
             currentPage += 1
             retrieveSongList()
         }
     }
     @IBAction func favButtonPressed(_ sender: UIButton) {
         
-        if let index = favSongID.firstIndex(of: filteredSongArray[sender.tag].trackId){
+        if let index = favSongID.firstIndex(of: songArray[sender.tag].trackId){
             favSong.remove(at: index)
             favSongID.remove(at: index)
             
         } else {
-            favSong.append(filteredSongArray[sender.tag])
-            favSongID.append(filteredSongArray[sender.tag].trackId)
+            favSong.append(songArray[sender.tag])
+            favSongID.append(songArray[sender.tag].trackId)
         }
         
         if let encodedFavSong = try? JSONEncoder().encode(favSong) {
@@ -141,7 +140,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             urlKeyword = "a"
         }
         
-        guard let url = URL(string: "https://itunes.apple.com/search?term=\(urlKeyword)&entity=song&offset=\(currentPage * songPerPage)&limit=\(songPerPage)") else{
+        guard let url = URL(string: "https://itunes.apple.com/search?term=\(urlKeyword)&entity=song&offset=\(currentPage * songPerPage)&limit=\(songPerPage)&country=\(selectedCountryCode)") else{
             return
         }
 
@@ -155,7 +154,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     if(decodedResponse.results.count > 0){
                         self.songArray.append(contentsOf: decodedResponse.results)
 
-                        self.filteredSongArray = self.songArray
+                        self.songArray = self.songArray
                         var indexPaths = [IndexPath]()
                         for i in self.songArray.count-20...self.songArray.count - 1 {
                             indexPaths.append(IndexPath(row: i, section: 0))
@@ -167,10 +166,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         self.retrieveMore = false
                         self.tableView.deleteRows(at: [IndexPath(row: self.songArray.count, section: 0)], with: .bottom)
                     }
-                    self.songArray[5].country = "UK"
-                    
-                    self.country_All = Array(Set(self.songArray.map { $0.country }))
-                    self.country_Filter = self.country_All
                 }
             } catch {
                 print("error: ", error)
@@ -184,6 +179,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("asdasdasdasdasdas search bar button clicked")
+        retrieveMore = true
         keyword = searchBar.searchTextField.text ?? ""
         songArray.removeAll()
         currentPage = -1
@@ -199,23 +196,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showFilter" {
             let vc = segue.destination as! filterViewController
-            vc.country_All = self.country_All
-            vc.country_Filter = self.country_Filter
+            vc.selectedCountry = selectedCountryCode
             vc.delegate = self
         }
     }
     
-    func confirmFilter(return_country: [String]) {
-        country_Filter = return_country
-        retrieveMore = false
-        filteredSongArray = songArray.filter({country_Filter.contains($0.country)})
+    func confirmFilter(return_country: String) {
+        selectedCountryCode = return_country
+        songArray.removeAll()
+        currentPage = -1
         tableView.reloadData()
     }
     func resetFilter() {
-        country_Filter = country_All
-        retrieveMore = true
-        filteredSongArray = songArray
-        tableView.reloadData()
+        print("resetFilter")
+        selectedCountryCode = "US"
+//        country_Filter = country_All
+//        retrieveMore = true
+//        songArray = songArray
+//        tableView.reloadData()
     }
     
     
