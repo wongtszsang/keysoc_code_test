@@ -70,7 +70,7 @@ class favViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             
-            var title = "Confirm to remove song from your favorite list?"
+            let title = "Confirm to remove song from your favorite list?"
                         
             let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
 

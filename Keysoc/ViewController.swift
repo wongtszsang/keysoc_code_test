@@ -46,6 +46,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        if let temparray = userDefaults.object(forKey: "favSongID") as? [Int] {
 //            favSongID = temparray
 //        }
+        
+        searchBar.backgroundImage = UIImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
