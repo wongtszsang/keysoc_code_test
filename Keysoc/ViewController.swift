@@ -91,11 +91,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.label_artistName.text = "\(songArray[indexPath.row].artistName)"
             
             if(favSongID.contains(songArray[indexPath.row].trackId)){
-                cell.imageview_fav.image = UIImage(systemName: "heart.fill")
-                cell.imageview_fav.tintColor = .red
+                if #available(iOS 13.0, *) {
+                    cell.imageview_fav.image = UIImage(systemName: "heart.fill")
+                    cell.imageview_fav.tintColor = .red
+                } else {
+                    cell.imageview_fav.image = UIImage(named: "heart-fill")
+                }
             } else {
-                cell.imageview_fav.image = UIImage(systemName: "heart")
-                cell.imageview_fav.tintColor = .lightGray
+                if #available(iOS 13.0, *) {
+                    cell.imageview_fav.image = UIImage(systemName: "heart")
+                    cell.imageview_fav.tintColor = .lightGray
+                } else {
+                    cell.imageview_fav.image = UIImage(named: "heart")
+                }
             }
             
             cell.button_fav.tag = indexPath.row
@@ -193,11 +201,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         retrieveMore = true
-        keyword = searchBar.searchTextField.text ?? ""
+        if #available(iOS 13.0, *) {
+            keyword = searchBar.searchTextField.text ?? ""
+        } else {
+            keyword = searchBar.text ?? ""
+        }
         songArray.removeAll()
         currentPage = -1
         tableView.reloadData()
-        searchBar.searchTextField.resignFirstResponder()
+        if #available(iOS 13.0, *) {
+            searchBar.searchTextField.resignFirstResponder()
+        } else {
+            searchBar.resignFirstResponder()
+        }
     }
     
     @IBAction func filterButtonPressed(_ sender: Any) {
