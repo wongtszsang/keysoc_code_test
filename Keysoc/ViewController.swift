@@ -148,6 +148,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             urlKeyword = "a"
         }
         
+        urlKeyword = urlKeyword.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         guard let url = URL(string: "https://itunes.apple.com/search?term=\(urlKeyword)&entity=song&offset=\(currentPage * songPerPage)&limit=\(songPerPage)&country=\(selectedCountryCode)") else{
             return
         }
