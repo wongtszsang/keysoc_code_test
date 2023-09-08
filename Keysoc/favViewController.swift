@@ -35,6 +35,7 @@ class favViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         if let temparray = userDefaults.object(forKey: "favSongID") as? [Int] {
             favSongID = temparray
         }
+        
         tableView.reloadData()
     }
     
@@ -106,7 +107,13 @@ class favViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     self.userDefaults.set(encodedFavSong, forKey: "favSong")
                 }
                 self.userDefaults.set(self.favSongID, forKey: "favSongID")
-                tableView.deleteRows(at: [indexPath], with: .left)
+                if self.favSong.isEmpty {
+                    tableView.reloadData()
+                } else {
+                    tableView.deleteRows(at: [indexPath], with: .left)
+                }
+                
+                
             }
             
             let cancelAction = UIAlertAction(title: cancelLabel, style: .cancel)
