@@ -18,6 +18,7 @@
 		9A986E072AAAED0800F3A95E /* KeysocUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A986E062AAAED0800F3A95E /* KeysocUITestsLaunchTests.swift */; };
 		9A986E142AAAEEDF00F3A95E /* searchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A986E132AAAEEDF00F3A95E /* searchViewController.swift */; };
 		9A986E172AAAF05E00F3A95E /* songObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A986E162AAAF05E00F3A95E /* songObject.swift */; };
+		9A986E192AAB0D2800F3A95E /* favViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A986E182AAB0D2800F3A95E /* favViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		9A986E062AAAED0800F3A95E /* KeysocUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysocUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9A986E132AAAEEDF00F3A95E /* searchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchViewController.swift; sourceTree = "<group>"; };
 		9A986E162AAAF05E00F3A95E /* songObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = songObject.swift; sourceTree = "<group>"; };
+		9A986E182AAB0D2800F3A95E /* favViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = favViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				9A986DEE2AAAED0800F3A95E /* LaunchScreen.storyboard */,
 				9A986DF12AAAED0800F3A95E /* Info.plist */,
 				9A986E132AAAEEDF00F3A95E /* searchViewController.swift */,
+				9A986E182AAB0D2800F3A95E /* favViewController.swift */,
 			);
 			path = Keysoc;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				9A986DE82AAAED0700F3A95E /* ViewController.swift in Sources */,
 				9A986DE42AAAED0700F3A95E /* AppDelegate.swift in Sources */,
 				9A986E142AAAEEDF00F3A95E /* searchViewController.swift in Sources */,
+				9A986E192AAB0D2800F3A95E /* favViewController.swift in Sources */,
 				9A986DE62AAAED0700F3A95E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
