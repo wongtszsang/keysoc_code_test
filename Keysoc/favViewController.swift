@@ -59,7 +59,14 @@ class favViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         if favSong.count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "noResultCell", for: indexPath) as! customTableCellNoResult
             
-            cell.label_noresult.text = "No Favorite Song"
+            let language = Bundle.main.preferredLocalizations.first! as NSString
+            var noSongText = "No Favorite Song"
+            if language == "zh-Hant" {
+                noSongText = "沒有歌曲"
+            } else if language == "zh-Hans" {
+                noSongText = "没有歌曲"
+            }
+            cell.label_noresult.text = noSongText
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! customTableCell
