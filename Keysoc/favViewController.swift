@@ -43,7 +43,11 @@ class favViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favSong.count
+        if favSong.count == 0 {
+            return 1
+        } else {
+            return favSong.count
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -51,14 +55,21 @@ class favViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! customTableCell
-        
-        cell.label_trackName.text = "\(favSong[indexPath.row].trackName )"
-        cell.label_artistName.text = "\(favSong[indexPath.row].artistName)"
-        
-        cell.imageview_thumbnail.downloadImage(link: favSong[indexPath.row].artworkUrl100, contentMode: .scaleAspectFit)
+        if favSong.count == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "noResultCell", for: indexPath) as! customTableCellNoResult
+            
+            cell.label_noresult.text = "No Favorite Song"
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! customTableCell
+            
+            cell.label_trackName.text = "\(favSong[indexPath.row].trackName )"
+            cell.label_artistName.text = "\(favSong[indexPath.row].artistName)"
+            
+            cell.imageview_thumbnail.downloadImage(link: favSong[indexPath.row].artworkUrl100, contentMode: .scaleAspectFit)
 
-        return cell
+            return cell
+        }
         
     }
     

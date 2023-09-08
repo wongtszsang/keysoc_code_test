@@ -279,6 +279,11 @@ class customTableCell2: UITableViewCell {
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
 }
 
+class customTableCellNoResult: UITableViewCell {
+    @IBOutlet weak var label_noresult: UILabel!
+
+}
+
 extension UIImageView {
     func downloadImage(link:String, contentMode: UIView.ContentMode) {
         URLSession.shared.dataTask( with: NSURL(string:link)! as URL, completionHandler: {

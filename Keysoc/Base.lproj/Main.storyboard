@@ -202,6 +202,29 @@
                                             <outlet property="loadingIndicator" destination="gdf-JO-leU" id="dH4-MM-eiT"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noResultCell" rowHeight="75" id="KTU-6E-3sl" customClass="customTableCellNoResult" customModule="Keysoc" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="235" width="393" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KTU-6E-3sl" id="z6n-YC-bSi">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="75"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ygo-EP-7WC">
+                                                    <rect key="frame" x="159.66666666666666" y="27" width="74" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Ygo-EP-7WC" firstAttribute="centerY" secondItem="z6n-YC-bSi" secondAttribute="centerY" id="hs1-c7-65d"/>
+                                                <constraint firstItem="Ygo-EP-7WC" firstAttribute="centerX" secondItem="z6n-YC-bSi" secondAttribute="centerX" id="pfX-5k-LaQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label_noresult" destination="Ygo-EP-7WC" id="tUz-dD-dG5"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="flZ-VG-Fac">
@@ -498,6 +521,29 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="loadingIndicator" destination="lqv-pO-ve9" id="8YW-TW-H43"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noResultCell" rowHeight="75" id="3k4-LZ-qfa" customClass="customTableCellNoResult" customModule="Keysoc" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="235" width="393" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3k4-LZ-qfa" id="jcP-ds-zcc">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="75"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tg9-ZU-62C">
+                                                    <rect key="frame" x="159.66666666666666" y="27" width="74" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Tg9-ZU-62C" firstAttribute="centerY" secondItem="jcP-ds-zcc" secondAttribute="centerY" id="9I7-3R-heX"/>
+                                                <constraint firstItem="Tg9-ZU-62C" firstAttribute="centerX" secondItem="jcP-ds-zcc" secondAttribute="centerX" id="xpo-F3-Stn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label_noresult" destination="Tg9-ZU-62C" id="pXr-7r-GBT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
