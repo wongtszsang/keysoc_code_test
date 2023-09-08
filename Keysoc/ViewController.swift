@@ -275,6 +275,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if segue.identifier == "showFilter" {
             let vc = segue.destination as! filterViewController
             vc.selectedCountry = selectedCountryCode
+            vc.selectedMediaType = selectedMedia
             vc.delegate = self
         }
     }
