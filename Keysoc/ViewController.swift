@@ -214,16 +214,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         for i in self.songArray.count-20...self.songArray.count - 1 {
                             indexPaths.append(IndexPath(row: i, section: 0))
                         }
-                        self.tableView.insertRows(at: indexPaths, with: .bottom)
+                        self.tableView.reloadData()
+//                        self.tableView.insertRows(at: indexPaths, with: .bottom)
                     }
                     
                     // Stop retriving when it reach the end
                     if(decodedResponse.results.count < self.songPerPage){
                         self.retrieveMore = false
                         // remove last row
-                        if self.songArray.count > 0 {
-                            self.tableView.deleteRows(at: [IndexPath(row: self.songArray.count, section: 0)], with: .bottom)
-                        }
+//                        if self.songArray.count > 0 {
+//                            self.tableView.deleteRows(at: [IndexPath(row: self.songArray.count, section: 0)], with: .bottom)
+//                        }
                     }
                 }
             } catch {
