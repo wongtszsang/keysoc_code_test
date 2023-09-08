@@ -1,0 +1,48 @@
+
+/* Class = "UIButton"; configuration.title = " "; ObjectID = "4ht-h4-w2K"; */
+"4ht-h4-w2K.configuration.title" = " ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "4ht-h4-w2K"; */
+"4ht-h4-w2K.normalTitle" = "";
+
+/* Class = "UIButton"; configuration.title = "Reset"; ObjectID = "FDq-yG-Na3"; */
+"FDq-yG-Na3.configuration.title" = "重置";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "FDq-yG-Na3"; */
+"FDq-yG-Na3.normalTitle" = "";
+
+/* Class = "UIButton"; configuration.title = " "; ObjectID = "Hg3-6e-Tjm"; */
+"Hg3-6e-Tjm.configuration.title" = " ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Hg3-6e-Tjm"; */
+"Hg3-6e-Tjm.normalTitle" = "";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "If0-Qk-AyP"; */
+"If0-Qk-AyP.title" = "设置";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "LXs-nh-TcJ"; */
+"LXs-nh-TcJ.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "VK2-6Y-dWL"; */
+"VK2-6Y-dWL.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hNW-Vh-rqf"; */
+"hNW-Vh-rqf.text" = "Label";
+
+/* Class = "UIButton"; configuration.title = "Filter"; ObjectID = "lLW-Uq-dEw"; */
+"lLW-Uq-dEw.configuration.title" = "筛选";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "lLW-Uq-dEw"; */
+"lLW-Uq-dEw.normalTitle" = "";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "lfv-Nl-99R"; */
+"lfv-Nl-99R.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Songs"; ObjectID = "nxl-jW-kwU"; */
+"nxl-jW-kwU.title" = "歌曲";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ydT-BC-Gv9"; */
+"ydT-BC-Gv9.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Favorite"; ObjectID = "ynw-8F-h6Q"; */
+"ynw-8F-h6Q.title" = "收藏";

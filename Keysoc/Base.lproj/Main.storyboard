@@ -98,7 +98,7 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ht-h4-w2K">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="90"/>
                                                             <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                                            <buttonConfiguration key="configuration" style="plain"/>
                                                             <connections>
                                                                 <action selector="favButtonPressed:" destination="jDF-eF-VN5" eventType="touchUpInside" id="e48-cX-u0e"/>
                                                             </connections>

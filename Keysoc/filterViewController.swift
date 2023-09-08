@@ -25,7 +25,11 @@ class filterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var selectedCountry = "US"
 
     var mediaType = ["Music", "Movie"]
+    var mediaName = ["Music", "Movie"]
     var selectedMediaType = "Music"
+    
+    var labeltext_country = "Country"
+    var labeltext_media = "Media"
     
 
     override func viewDidLoad() {
@@ -36,6 +40,24 @@ class filterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         filter_tableview.dataSource = self
         filter_tableview.delegate = self
         
+        let language = Bundle.main.preferredLocalizations.first! as NSString
+        if language == "zh-Hant" {
+            countryCode = ["HK", "CN", "US", "GB"]
+            countryName = ["香港", "中國", "美國", "英國"]
+            mediaName = ["音樂", "電影"]
+            labeltext_country = "地區"
+            labeltext_media = "媒體類型"
+        } else if language == "zh-Hans" {
+            countryCode = ["CN", "HK", "US", "GB"]
+            countryName = ["中国", "香港", "美国", "英国"]
+            mediaName = ["音乐", "电影"]
+            labeltext_country = "地区"
+            labeltext_media = "媒体类型"
+            
+        }
+        
+        
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -44,9 +66,9 @@ class filterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return "Country"
+            return labeltext_country
         } else if section == 1 {
-            return "Media Type"
+            return labeltext_media
         } else {
             return ""
         }
@@ -76,7 +98,7 @@ class filterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell") as! customFilterTableCell
-            cell.label.text = "\(mediaType[indexPath.row])"
+            cell.label.text = "\(mediaName[indexPath.row])"
             
             if selectedMediaType == mediaType[indexPath.row]{
                 cell.imageview_checkmark.isHidden = false
