@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vn3-MD-luh">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -97,7 +98,7 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ht-h4-w2K">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="90"/>
                                                             <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain"/>
+                                                            <buttonConfiguration key="configuration" style="plain" title=" "/>
                                                             <connections>
                                                                 <action selector="favButtonPressed:" destination="jDF-eF-VN5" eventType="touchUpInside" id="e48-cX-u0e"/>
                                                             </connections>
@@ -172,7 +173,7 @@
                                             <constraint firstAttribute="width" constant="50" id="SSU-Wq-oUU"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="slider.horizontal.3" catalog="system"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="slider.horizontal.3" catalog="system" title=" "/>
                                         <connections>
                                             <action selector="filterButtonPressed:" destination="jDF-eF-VN5" eventType="touchUpInside" id="ssO-xC-kmf"/>
                                         </connections>
