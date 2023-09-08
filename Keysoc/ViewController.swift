@@ -9,12 +9,20 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let userDefaults = UserDefaults.standard
+    
     @IBOutlet weak var tableView: UITableView!
     
     var songArray: [songObject] = []
     
     var currentPage = -1
     var songPerPage = 20
+    
+    var favSong: [songObject] = []
+    var favSongID: [Int] = []
+    
+    
+    var retrieveMore = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +31,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         
+        if let data = UserDefaults.standard.object(forKey: "favSong") as? Data,
+           let temparray = try? JSONDecoder().decode([songObject].self, from: data) {
+            favSong = temparray
+        }
+        if let temparray = userDefaults.object(forKey: "favSongID") as? [Int] {
+            favSongID = temparray
+        }
+        
+        print(favSong)
+        
+        print(favSongID)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -30,7 +49,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return songArray.count + 1
+        if(retrieveMore){
+            return songArray.count + 1
+        }
+        else {
+            return songArray.count
+        }
+            
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -47,6 +72,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             cell.label_trackName.text = "\(songArray[indexPath.row].trackName)"
             cell.label_artistName.text = "\(songArray[indexPath.row].artistName)"
+            
+            if(favSongID.contains(songArray[indexPath.row].trackId)){
+                cell.imageview_fav.image = UIImage(systemName: "heart.fill")
+                cell.imageview_fav.tintColor = .red
+            } else {
+                cell.imageview_fav.image = UIImage(systemName: "heart")
+                cell.imageview_fav.tintColor = .lightGray
+            }
+            
+            cell.button_fav.tag = indexPath.row
             
     //        cell.imageview_thumbnail.image = UIImage(named: "placeholder")
             cell.imageview_thumbnail.downloadImage(link: songArray[indexPath.row].artworkUrl100, contentMode: .scaleAspectFit)
@@ -71,12 +106,35 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             retrieveSongList()
         }
     }
+    @IBAction func favButtonPressed(_ sender: UIButton) {
+        
+        if let index = favSongID.firstIndex(of: songArray[sender.tag].trackId){
+            favSong.remove(at: index)
+            favSongID.remove(at: index)
+            
+        } else {
+            favSong.append(songArray[sender.tag])
+            favSongID.append(songArray[sender.tag].trackId)
+        }
+        
+        if let encodedFavSong = try? JSONEncoder().encode(favSong) {
+            userDefaults.set(encodedFavSong, forKey: "favSong")
+        }
+        userDefaults.set(favSongID, forKey: "favSongID")
+        
+        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
+    }
+    
+    
     
     func retrieveSongList(){
         guard let url = URL(string: "https://itunes.apple.com/search?term=jack+johnson&offset=\(currentPage * songPerPage)&limit=\(songPerPage)") else{
             return
         }
-        print(url)
+//
+//        guard let url = URL(string: "https://itunes.apple.com/search?entity=allArtist&attribute=allArtistTerm&offset=\(currentPage * songPerPage)&limit=\(songPerPage)") else{
+//            return
+//        }
         
 //        entity=allArtist&attribute=allArtistTerm
 
@@ -87,15 +145,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             do {
                 let decodedResponse = try JSONDecoder().decode(songJsonResult.self, from: data)
                 DispatchQueue.main.async {
-                    self.songArray.append(contentsOf: decodedResponse.results)
+                    if(decodedResponse.results.count > 0){
+                        self.songArray.append(contentsOf: decodedResponse.results)
 
-                    var indexPaths = [IndexPath]()
-                    for i in self.songArray.count-20...self.songArray.count - 1 {
-                        indexPaths.append(IndexPath(row: i, section: 0))
+                        var indexPaths = [IndexPath]()
+                        for i in self.songArray.count-20...self.songArray.count - 1 {
+                            indexPaths.append(IndexPath(row: i, section: 0))
+                        }
+                        self.tableView.insertRows(at: indexPaths, with: .bottom)
                     }
-                    print(indexPaths)
-                    self.tableView.insertRows(at: indexPaths, with: .bottom)
-        
+                    
+                    if(decodedResponse.results.count < self.songPerPage){
+                        self.retrieveMore = false
+                        self.tableView.deleteRows(at: [IndexPath(row: self.songArray.count, section: 0)], with: .bottom)
+                    }
                 }
             } catch {
                 print("error: ", error)
@@ -114,6 +177,8 @@ class customTableCell: UITableViewCell {
     @IBOutlet weak var imageview_thumbnail: UIImageView!
     @IBOutlet weak var label_trackName: UILabel!
     @IBOutlet weak var label_artistName: UILabel!
+    @IBOutlet weak var imageview_fav: UIImageView!
+    @IBOutlet weak var button_fav: UIButton!
 }
 
 class customTableCell2: UITableViewCell {

@@ -17,7 +17,7 @@ struct songObject:Codable{
 //    let kind: String
 //    let artistId: Int
 //    let collectionId: Int
-//    let trackId: Int
+    let trackId: Int
     let artistName: String
     let collectionName: String?
     let trackName: String
