@@ -59,7 +59,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="LXs-nh-TcJ" firstAttribute="centerY" secondItem="wFC-Rv-xrm" secondAttribute="centerY" id="M1r-ZG-wxA"/>
                                                         <constraint firstItem="LXs-nh-TcJ" firstAttribute="leading" secondItem="wFC-Rv-xrm" secondAttribute="leading" constant="10" id="nqD-Js-l33"/>
@@ -75,7 +75,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="lfv-Nl-99R" firstAttribute="centerY" secondItem="8uc-ML-9aK" secondAttribute="centerY" id="I3v-5J-0ZN"/>
                                                         <constraint firstAttribute="height" constant="20" id="INM-N2-Lui"/>
@@ -102,6 +102,23 @@
                                             <outlet property="label_artistName" destination="lfv-Nl-99R" id="ZhB-Ny-UO9"/>
                                             <outlet property="label_trackName" destination="LXs-nh-TcJ" id="Xez-WU-EH5"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadMoreCell" rowHeight="75" id="uJm-Ov-S7a">
+                                        <rect key="frame" x="0.0" y="167" width="393" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uJm-Ov-S7a" id="sLB-Ln-8to">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="75"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="gdf-JO-leU">
+                                                    <rect key="frame" x="178" y="19" width="37" height="37"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gdf-JO-leU" firstAttribute="centerY" secondItem="sLB-Ln-8to" secondAttribute="centerY" id="h1i-Pk-BN5"/>
+                                                <constraint firstItem="gdf-JO-leU" firstAttribute="centerX" secondItem="sLB-Ln-8to" secondAttribute="centerX" id="lF8-rI-REj"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

@@ -12,6 +12,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     
     var songArray: [songObject] = []
+    
+    var currentPage = 0
+    var songPerPage = 20
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,24 +31,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return songArray.count
+        return songArray.count + 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! customTableCell
-        
-        cell.label_trackName.text = "\(songArray[indexPath.row].trackName)"
-        cell.label_artistName.text = "\(songArray[indexPath.row].artistName)"
-        
-//        cell.cellImageView.image = UIImage(named: "placeholder")
-        cell.imageview_thumbnail.downloadImage(link: songArray[indexPath.row].artworkUrl100, contentMode: .scaleAspectFit)
+        if(indexPath.row < songArray.count){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! customTableCell
+            
+            cell.label_trackName.text = "\(songArray[indexPath.row].trackName)"
+            cell.label_artistName.text = "\(songArray[indexPath.row].artistName)"
+            
+    //        cell.imageview_thumbnail.image = UIImage(named: "placeholder")
+            cell.imageview_thumbnail.downloadImage(link: songArray[indexPath.row].artworkUrl100, contentMode: .scaleAspectFit)
 
-        
-        return cell
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "loadMoreCell", for: indexPath)
+            return cell
+        }
         
     }
     
     func retrieveSongList(){
-        guard let url = URL(string: "https://itunes.apple.com/search?term=jack+johnson&offset=20&limit=20") else{
+        guard let url = URL(string: "https://itunes.apple.com/search?term=jack+johnson&offset=\(currentPage * songPerPage)&limit=\(songPerPage)") else{
             return
         }
         
