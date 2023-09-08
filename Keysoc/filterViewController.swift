@@ -55,9 +55,6 @@ class filterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             labeltext_media = "媒体类型"
             
         }
-        
-        
-        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

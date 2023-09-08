@@ -115,13 +115,13 @@
 				9A986DE32AAAED0700F3A95E /* AppDelegate.swift */,
 				9A986DE52AAAED0700F3A95E /* SceneDelegate.swift */,
 				9A986DE72AAAED0700F3A95E /* ViewController.swift */,
+				9A986E1A2AAB1A1700F3A95E /* filterViewController.swift */,
+				9A986E182AAB0D2800F3A95E /* favViewController.swift */,
+				9A986E132AAAEEDF00F3A95E /* settingViewController.swift */,
 				9A986DE92AAAED0700F3A95E /* Main.storyboard */,
 				9A986DEC2AAAED0800F3A95E /* Assets.xcassets */,
 				9A986DEE2AAAED0800F3A95E /* LaunchScreen.storyboard */,
 				9A986DF12AAAED0800F3A95E /* Info.plist */,
-				9A986E132AAAEEDF00F3A95E /* settingViewController.swift */,
-				9A986E182AAB0D2800F3A95E /* favViewController.swift */,
-				9A986E1A2AAB1A1700F3A95E /* filterViewController.swift */,
 			);
 			path = Keysoc;
 			sourceTree = "<group>";

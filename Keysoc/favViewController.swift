@@ -17,6 +17,8 @@ class favViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var favSongID: [Int] = []
     
     var retrieveMore = true
+    
+    let language = Bundle.main.preferredLocalizations.first! as NSString
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +61,6 @@ class favViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         if favSong.count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "noResultCell", for: indexPath) as! customTableCellNoResult
             
-            let language = Bundle.main.preferredLocalizations.first! as NSString
             var noSongText = "No Favorite Song"
             if language == "zh-Hant" {
                 noSongText = "沒有歌曲"
@@ -88,7 +89,6 @@ class favViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-            let language = Bundle.main.preferredLocalizations.first! as NSString
             var title = "Confirm to remove song from your favorite list?"
             var confirmLabel = "Confirm"
             var cancelLabel = "Cancel"
