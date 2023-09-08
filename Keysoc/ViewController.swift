@@ -93,17 +93,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if(favSongID.contains(songArray[indexPath.row].trackId)){
                 if #available(iOS 13.0, *) {
                     cell.imageview_fav.image = UIImage(systemName: "heart.fill")
-                    cell.imageview_fav.tintColor = .red
                 } else {
                     cell.imageview_fav.image = UIImage(named: "heart-fill")
                 }
+                cell.imageview_fav.tintColor = .red
             } else {
                 if #available(iOS 13.0, *) {
                     cell.imageview_fav.image = UIImage(systemName: "heart")
-                    cell.imageview_fav.tintColor = .lightGray
                 } else {
                     cell.imageview_fav.image = UIImage(named: "heart")
                 }
+                cell.imageview_fav.tintColor = .lightGray
             }
             
             cell.button_fav.tag = indexPath.row
@@ -133,14 +133,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     @IBAction func favButtonPressed(_ sender: UIButton) {
         
+        let cell = tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as! customTableCell
         
+        var isFav = false
         if let index = favSongID.firstIndex(of: songArray[sender.tag].trackId){
             favSong.remove(at: index)
             favSongID.remove(at: index)
             
+            if #available(iOS 13.0, *) {
+                cell.imageview_fav.image = UIImage(systemName: "heart")
+            } else {
+                cell.imageview_fav.image = UIImage(named: "heart")
+            }
+            cell.imageview_fav.tintColor = .lightGray
         } else {
+            isFav = true
             favSong.append(songArray[sender.tag])
             favSongID.append(songArray[sender.tag].trackId)
+            
+            if #available(iOS 13.0, *) {
+                cell.imageview_fav.image = UIImage(systemName: "heart.fill")
+            } else {
+                cell.imageview_fav.image = UIImage(named: "heart-fill")
+            }
+            cell.imageview_fav.tintColor = .red
         }
         
         if let encodedFavSong = try? JSONEncoder().encode(favSong) {
@@ -148,7 +164,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         userDefaults.set(favSongID, forKey: "favSongID")
         
-        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
+        if isFav {
+            
+            UIView.animate(withDuration: 0.3, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+                cell.imageview_fav.transform = CGAffineTransform.identity.scaledBy(x: 2, y: 2)
+             }) { (finished) in
+                 UIView.animate(withDuration: 0.2, animations: {
+                     cell.imageview_fav.transform = CGAffineTransform.identity
+               })
+            }
+        }
+        
     }
     
     

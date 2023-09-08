@@ -69,12 +69,24 @@ class favViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
+            let language = Bundle.main.preferredLocalizations.first! as NSString
+            var title = "Confirm to remove song from your favorite list?"
+            var confirmLabel = "Confirm"
+            var cancelLabel = "Cancel"
+            if language == "zh-Hant" {
+                title = "確認從我的最愛中刪除歌曲嗎？"
+                confirmLabel = "確認"
+                cancelLabel = "取消"
+            } else if language == "zh-Hans" {
+                title = "确认从您喜爱列表中删除歌曲吗？"
+                confirmLabel = "确认"
+                cancelLabel = "取消"
+            }
             
-            let title = "Confirm to remove song from your favorite list?"
                         
             let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
 
-            let deleteAction = UIAlertAction(title: "Confirm", style: .destructive) { action in
+            let deleteAction = UIAlertAction(title: confirmLabel, style: .destructive) { action in
 
                 self.favSong.remove(at: indexPath.row)
                 self.favSongID.remove(at: indexPath.row)
@@ -86,7 +98,7 @@ class favViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                 tableView.deleteRows(at: [indexPath], with: .left)
             }
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            let cancelAction = UIAlertAction(title: cancelLabel, style: .cancel)
 
             alert.addAction(deleteAction)
             alert.addAction(cancelAction)
