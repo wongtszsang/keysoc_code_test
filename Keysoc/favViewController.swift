@@ -49,7 +49,7 @@ class favViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! customTableCell
         
-        cell.label_trackName.text = "\(favSong[indexPath.row].trackName)"
+        cell.label_trackName.text = "\(favSong[indexPath.row].trackName ?? "")"
         cell.label_artistName.text = "\(favSong[indexPath.row].artistName)"
         
         cell.imageview_thumbnail.downloadImage(link: favSong[indexPath.row].artworkUrl100, contentMode: .scaleAspectFit)

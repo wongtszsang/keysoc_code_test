@@ -43,7 +43,7 @@ struct songObject:Codable{
 //    let trackCount: Int
 //    let trackNumber: Int
 //    let trackTimeMillis: Int
-//    let country: String
+    var country: String
 //    let currency: String
 //    let primaryGenreName: String
 //    let isStreamable: Bool
