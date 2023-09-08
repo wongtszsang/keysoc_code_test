@@ -16,6 +16,7 @@
 		9A986DFB2AAAED0800F3A95E /* KeysocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A986DFA2AAAED0800F3A95E /* KeysocTests.swift */; };
 		9A986E052AAAED0800F3A95E /* KeysocUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A986E042AAAED0800F3A95E /* KeysocUITests.swift */; };
 		9A986E072AAAED0800F3A95E /* KeysocUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A986E062AAAED0800F3A95E /* KeysocUITestsLaunchTests.swift */; };
+		9A986E142AAAEEDF00F3A95E /* searchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A986E132AAAEEDF00F3A95E /* searchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		9A986E002AAAED0800F3A95E /* KeysocUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeysocUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A986E042AAAED0800F3A95E /* KeysocUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysocUITests.swift; sourceTree = "<group>"; };
 		9A986E062AAAED0800F3A95E /* KeysocUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysocUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9A986E132AAAEEDF00F3A95E /* searchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				9A986DEC2AAAED0800F3A95E /* Assets.xcassets */,
 				9A986DEE2AAAED0800F3A95E /* LaunchScreen.storyboard */,
 				9A986DF12AAAED0800F3A95E /* Info.plist */,
+				9A986E132AAAEEDF00F3A95E /* searchViewController.swift */,
 			);
 			path = Keysoc;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			files = (
 				9A986DE82AAAED0700F3A95E /* ViewController.swift in Sources */,
 				9A986DE42AAAED0700F3A95E /* AppDelegate.swift in Sources */,
+				9A986E142AAAEEDF00F3A95E /* searchViewController.swift in Sources */,
 				9A986DE62AAAED0700F3A95E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
