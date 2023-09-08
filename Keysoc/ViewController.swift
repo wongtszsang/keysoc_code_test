@@ -33,6 +33,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return songArray.count + 1
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == songArray.count{
+            return 75
+        } else {
+            return 110
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(indexPath.row < songArray.count){
             let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! customTableCell
@@ -46,10 +55,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return cell
         }
         else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "loadMoreCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "loadMoreCell", for: indexPath) as! customTableCell2
+            cell.loadingIndicator.startAnimating()
             return cell
         }
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func retrieveSongList(){
@@ -83,11 +97,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 
 class customTableCell: UITableViewCell {
-    
     @IBOutlet weak var imageview_thumbnail: UIImageView!
     @IBOutlet weak var label_trackName: UILabel!
     @IBOutlet weak var label_artistName: UILabel!
-    
+}
+
+class customTableCell2: UITableViewCell {
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
 }
 
 extension UIImageView {
