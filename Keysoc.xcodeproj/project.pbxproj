@@ -17,6 +17,7 @@
 		9A986E052AAAED0800F3A95E /* KeysocUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A986E042AAAED0800F3A95E /* KeysocUITests.swift */; };
 		9A986E072AAAED0800F3A95E /* KeysocUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A986E062AAAED0800F3A95E /* KeysocUITestsLaunchTests.swift */; };
 		9A986E142AAAEEDF00F3A95E /* searchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A986E132AAAEEDF00F3A95E /* searchViewController.swift */; };
+		9A986E172AAAF05E00F3A95E /* songObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A986E162AAAF05E00F3A95E /* songObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		9A986E042AAAED0800F3A95E /* KeysocUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysocUITests.swift; sourceTree = "<group>"; };
 		9A986E062AAAED0800F3A95E /* KeysocUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysocUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9A986E132AAAEEDF00F3A95E /* searchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchViewController.swift; sourceTree = "<group>"; };
+		9A986E162AAAF05E00F3A95E /* songObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = songObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		9A986DE22AAAED0700F3A95E /* Keysoc */ = {
 			isa = PBXGroup;
 			children = (
+				9A986E152AAAF05200F3A95E /* Model */,
 				9A986DE32AAAED0700F3A95E /* AppDelegate.swift */,
 				9A986DE52AAAED0700F3A95E /* SceneDelegate.swift */,
 				9A986DE72AAAED0700F3A95E /* ViewController.swift */,
@@ -128,6 +131,14 @@
 				9A986E062AAAED0800F3A95E /* KeysocUITestsLaunchTests.swift */,
 			);
 			path = KeysocUITests;
+			sourceTree = "<group>";
+		};
+		9A986E152AAAF05200F3A95E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9A986E162AAAF05E00F3A95E /* songObject.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A986E172AAAF05E00F3A95E /* songObject.swift in Sources */,
 				9A986DE82AAAED0700F3A95E /* ViewController.swift in Sources */,
 				9A986DE42AAAED0700F3A95E /* AppDelegate.swift in Sources */,
 				9A986E142AAAEEDF00F3A95E /* searchViewController.swift in Sources */,

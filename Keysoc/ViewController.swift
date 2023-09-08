@@ -11,6 +11,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     
+    var songArray: [songObject] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +19,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        retrieveSongList()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -25,16 +28,55 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return songArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! customTableCell
         
-        cell.label_title.text = "\(indexPath.row)"
+        cell.label_title.text = "\(songArray[indexPath.row].trackName)"
         
         return cell
         
     }
+    
+    func retrieveSongList(){
+        guard let url = URL(string: "https://itunes.apple.com/search?term=jack+johnson&offset=20&limit=20") else{
+            return
+        }
+        
+//        entity=allArtist&attribute=allArtistTerm
+
+        let task = URLSession.shared.dataTask(with: url) {
+          (data, response, error) in
+
+        if let data = data {
+            do {
+                let decodedResponse = try JSONDecoder().decode(songJsonResult.self, from: data)
+                DispatchQueue.main.async {
+                    self.songArray = decodedResponse.results
+                    self.tableView.reloadData()
+                }
+            } catch let DecodingError.dataCorrupted(context) {
+                print(context)
+            } catch let DecodingError.keyNotFound(key, context) {
+                print("Key '\(key)' not found:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch let DecodingError.valueNotFound(value, context) {
+                print("Value '\(value)' not found:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch let DecodingError.typeMismatch(type, context)  {
+                print("Type '\(type)' mismatch:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch {
+                print("error: ", error)
+            }
+                return
+            }
+        }
+
+        task.resume()
+    }
+
 
 }
 
