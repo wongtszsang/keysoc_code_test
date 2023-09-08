@@ -260,16 +260,33 @@
                                     <constraint firstAttribute="bottom" secondItem="eCY-wd-bIh" secondAttribute="bottom" id="xfp-Yg-DSu"/>
                                 </constraints>
                             </view>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dz-pp-mvy">
+                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="egn-7P-68p">
+                                        <rect key="frame" x="178" y="336.66666666666669" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="egn-7P-68p" firstAttribute="centerY" secondItem="2dz-pp-mvy" secondAttribute="centerY" id="XKJ-HM-zXg"/>
+                                    <constraint firstItem="egn-7P-68p" firstAttribute="centerX" secondItem="2dz-pp-mvy" secondAttribute="centerX" id="rqe-Kj-5KI"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="v10-hG-l2T"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="flZ-VG-Fac" firstAttribute="top" secondItem="v10-hG-l2T" secondAttribute="top" id="4Lz-v0-Qpz"/>
+                            <constraint firstItem="2dz-pp-mvy" firstAttribute="top" secondItem="v10-hG-l2T" secondAttribute="top" id="4x4-WA-BuP"/>
                             <constraint firstItem="P4z-6P-k9L" firstAttribute="leading" secondItem="v10-hG-l2T" secondAttribute="leading" id="8Id-hJ-fp0"/>
                             <constraint firstItem="P4z-6P-k9L" firstAttribute="top" secondItem="flZ-VG-Fac" secondAttribute="bottom" id="8sK-eN-Fks"/>
+                            <constraint firstItem="2dz-pp-mvy" firstAttribute="leading" secondItem="v10-hG-l2T" secondAttribute="leading" id="EBc-h3-1mh"/>
                             <constraint firstItem="v10-hG-l2T" firstAttribute="trailing" secondItem="flZ-VG-Fac" secondAttribute="trailing" id="Qyb-Kh-kpU"/>
                             <constraint firstItem="v10-hG-l2T" firstAttribute="trailing" secondItem="P4z-6P-k9L" secondAttribute="trailing" id="YeY-fk-Grc"/>
                             <constraint firstItem="flZ-VG-Fac" firstAttribute="leading" secondItem="v10-hG-l2T" secondAttribute="leading" id="Zbp-60-h4O"/>
+                            <constraint firstAttribute="trailing" secondItem="2dz-pp-mvy" secondAttribute="trailing" id="cAi-kD-2wC"/>
+                            <constraint firstItem="2dz-pp-mvy" firstAttribute="bottom" secondItem="v10-hG-l2T" secondAttribute="bottom" id="ndP-Is-zv1"/>
                             <constraint firstItem="v10-hG-l2T" firstAttribute="bottom" secondItem="P4z-6P-k9L" secondAttribute="bottom" id="tis-kX-TaC"/>
                         </constraints>
                     </view>
@@ -277,12 +294,13 @@
                     <connections>
                         <outlet property="searchBar" destination="eCY-wd-bIh" id="VnR-Lm-V6y"/>
                         <outlet property="tableView" destination="P4z-6P-k9L" id="7iH-Dv-unc"/>
+                        <outlet property="view_loading" destination="2dz-pp-mvy" id="txE-io-rcf"/>
                         <segue destination="tuc-yC-YPw" kind="presentation" identifier="showFilter" id="xnd-Cu-1Dq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qLH-22-pFu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="595" y="-542"/>
+            <point key="canvasLocation" x="594.6564885496183" y="-542.25352112676057"/>
         </scene>
         <!--Filter View Controller-->
         <scene sceneID="mTZ-ry-5YJ">

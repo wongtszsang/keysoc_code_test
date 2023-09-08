@@ -14,6 +14,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var view_loading: UIView!
     
     
     var songArray: [songObject] = []
@@ -41,6 +42,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // For removing useless top and bottom border
         searchBar.backgroundImage = UIImage()
+        
+        view_loading.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -189,6 +192,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     func retrieveSongList(){
+        
+        view_loading.isHidden = false
+        
         var urlKeyword = keyword
         if urlKeyword.isEmpty{
             urlKeyword = "a"
@@ -203,6 +209,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
           (data, response, error) in
 
         if let data = data {
+            
+            defer {
+                DispatchQueue.main.async {
+                    self.view_loading.isHidden = true
+                }
+            }
             do {
                 let decodedResponse = try JSONDecoder().decode(songJsonResult.self, from: data)
                 DispatchQueue.main.async {
