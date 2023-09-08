@@ -9,7 +9,7 @@ import UIKit
 
 protocol filterViewControllerDelegate
 {
-    func confirmFilter(return_country : String)
+    func confirmFilter(return_country : String, return_media: String)
 }
 
 
@@ -22,8 +22,11 @@ class filterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var countryCode = ["US", "GB", "HK", "CN"]
     var countryName = ["United States", "United Kingdom", "Hong Kong", "China"]
-    
     var selectedCountry = "US"
+
+    var mediaType = ["Music", "Movie"]
+    var selectedMediaType = "Music"
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +56,7 @@ class filterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if section == 0 {
             return countryCode.count
         } else if section == 1 {
-            return 0
+            return mediaType.count
         } else {
             return 0
         }
@@ -73,7 +76,14 @@ class filterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell") as! customFilterTableCell
-            cell.label.text = ""
+            cell.label.text = "\(mediaType[indexPath.row])"
+            
+            if selectedMediaType == mediaType[indexPath.row]{
+                cell.imageview_checkmark.isHidden = false
+            } else {
+                cell.imageview_checkmark.isHidden = true
+            }
+            
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell") as! customFilterTableCell
@@ -83,18 +93,24 @@ class filterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        selectedCountry = countryCode[indexPath.row]
+        
+        if indexPath.section == 0 {
+            selectedCountry = countryCode[indexPath.row]
+        } else if indexPath.section == 1{
+            selectedMediaType = mediaType[indexPath.row]
+        }
         tableView.reloadData()
+        
         
     }
     
     @IBAction func confirmButtonPressed(_ sender: Any) {
-        delegate.confirmFilter(return_country: selectedCountry)
+        delegate.confirmFilter(return_country: selectedCountry, return_media: selectedMediaType)
         self.dismiss(animated: true)
     }
     
     @IBAction func resetBtnPressed(_ sender: Any) {
-        delegate.confirmFilter(return_country: "US")
+        delegate.confirmFilter(return_country: "US", return_media: "Music")
         self.dismiss(animated: true)
     }
 

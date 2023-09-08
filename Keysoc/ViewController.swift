@@ -25,6 +25,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var favSongID: [Int] = []
     
     var selectedCountryCode = "US"
+    var selectedMedia = "Music"
     
     var keyword = ""
     
@@ -149,9 +150,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         urlKeyword = urlKeyword.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-        guard let url = URL(string: "https://itunes.apple.com/search?term=\(urlKeyword)&entity=song&offset=\(currentPage * songPerPage)&limit=\(songPerPage)&country=\(selectedCountryCode)") else{
+        guard let url = URL(string: "https://itunes.apple.com/search?term=\(urlKeyword)&type=songs&media=\(selectedMedia.lowercased())&offset=\(currentPage * songPerPage)&limit=\(songPerPage)&country=\(selectedCountryCode)") else{
             return
         }
+        print(url)
 
         let task = URLSession.shared.dataTask(with: url) {
           (data, response, error) in
@@ -209,8 +211,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    func confirmFilter(return_country: String) {
+    func confirmFilter(return_country: String, return_media: String) {
         selectedCountryCode = return_country
+        selectedMedia = return_media
         songArray.removeAll()
         currentPage = -1
         tableView.reloadData()
