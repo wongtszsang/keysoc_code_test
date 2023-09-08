@@ -12,7 +12,7 @@
         <!--Settings-->
         <scene sceneID="tEd-44-7qz">
             <objects>
-                <viewController id="2pp-on-aum" customClass="settingViewController" customModule="Keysoc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2pp-on-aum" customClass="settingViewController" customModule="KeySong" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gra-yK-yOd">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="710"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Lxk-h5-IcZ" customClass="settingTableCell" customModule="Keysoc" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Lxk-h5-IcZ" customClass="settingTableCell" customModule="KeySong" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lxk-h5-IcZ" id="I5v-6n-HqG">
@@ -69,7 +69,7 @@
         <!--Songs-->
         <scene sceneID="9Wj-D4-58J">
             <objects>
-                <viewController id="jDF-eF-VN5" customClass="ViewController" customModule="Keysoc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jDF-eF-VN5" customClass="ViewController" customModule="KeySong" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nJo-2K-YpK">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,7 +78,7 @@
                                 <rect key="frame" x="0.0" y="109" width="393" height="660"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" rowHeight="110" id="fSG-pX-owj" customClass="customTableCell" customModule="Keysoc" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" rowHeight="110" id="fSG-pX-owj" customClass="customTableCell" customModule="KeySong" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fSG-pX-owj" id="vfo-1t-WtV">
@@ -182,7 +182,7 @@
                                             <outlet property="label_trackName" destination="LXs-nh-TcJ" id="Xez-WU-EH5"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadMoreCell" rowHeight="75" id="uJm-Ov-S7a" customClass="customTableCell2" customModule="Keysoc" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadMoreCell" rowHeight="75" id="uJm-Ov-S7a" customClass="customTableCell2" customModule="KeySong" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="160" width="393" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uJm-Ov-S7a" id="sLB-Ln-8to">
@@ -202,7 +202,7 @@
                                             <outlet property="loadingIndicator" destination="gdf-JO-leU" id="dH4-MM-eiT"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noResultCell" rowHeight="75" id="KTU-6E-3sl" customClass="customTableCellNoResult" customModule="Keysoc" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noResultCell" rowHeight="75" id="KTU-6E-3sl" customClass="customTableCellNoResult" customModule="KeySong" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="235" width="393" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KTU-6E-3sl" id="z6n-YC-bSi">
@@ -287,7 +287,7 @@
         <!--Filter View Controller-->
         <scene sceneID="mTZ-ry-5YJ">
             <objects>
-                <viewController id="tuc-yC-YPw" customClass="filterViewController" customModule="Keysoc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tuc-yC-YPw" customClass="filterViewController" customModule="KeySong" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mwS-nX-S6D">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -296,7 +296,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="767"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="filterCell" rowHeight="40" id="pNz-Uo-g9U" customClass="customFilterTableCell" customModule="Keysoc" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="filterCell" rowHeight="40" id="pNz-Uo-g9U" customClass="customFilterTableCell" customModule="KeySong" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pNz-Uo-g9U" id="jmE-OF-apn">
@@ -425,7 +425,7 @@
         <!--Favorite-->
         <scene sceneID="qfj-gs-9zo">
             <objects>
-                <viewController id="lFd-yi-dnN" customClass="favViewController" customModule="Keysoc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lFd-yi-dnN" customClass="favViewController" customModule="KeySong" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sXd-0d-vdU">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -434,7 +434,7 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="710"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" rowHeight="110" id="l4B-uu-WB7" customClass="customTableCell" customModule="Keysoc" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" rowHeight="110" id="l4B-uu-WB7" customClass="customTableCell" customModule="KeySong" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="l4B-uu-WB7" id="36Y-uB-Wav">
@@ -503,7 +503,7 @@
                                             <outlet property="label_trackName" destination="ydT-BC-Gv9" id="tbj-mT-o1V"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadMoreCell" rowHeight="75" id="xjq-Av-DBW" customClass="customTableCell2" customModule="Keysoc" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadMoreCell" rowHeight="75" id="xjq-Av-DBW" customClass="customTableCell2" customModule="KeySong" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="160" width="393" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xjq-Av-DBW" id="cFg-nD-RGJ">
@@ -523,7 +523,7 @@
                                             <outlet property="loadingIndicator" destination="lqv-pO-ve9" id="8YW-TW-H43"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noResultCell" rowHeight="75" id="3k4-LZ-qfa" customClass="customTableCellNoResult" customModule="Keysoc" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noResultCell" rowHeight="75" id="3k4-LZ-qfa" customClass="customTableCellNoResult" customModule="KeySong" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="235" width="393" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3k4-LZ-qfa" id="jcP-ds-zcc">

@@ -40,7 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9A986DE02AAAED0700F3A95E /* Keysoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Keysoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A986DE02AAAED0700F3A95E /* KeySong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeySong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A986DE32AAAED0700F3A95E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A986DE52AAAED0700F3A95E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9A986DE72AAAED0700F3A95E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,9 +48,9 @@
 		9A986DEC2AAAED0800F3A95E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A986DEF2AAAED0800F3A95E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A986DF12AAAED0800F3A95E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9A986DF62AAAED0800F3A95E /* KeysocTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeysocTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A986DF62AAAED0800F3A95E /* KeySongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeySongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A986DFA2AAAED0800F3A95E /* KeysocTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysocTests.swift; sourceTree = "<group>"; };
-		9A986E002AAAED0800F3A95E /* KeysocUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeysocUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A986E002AAAED0800F3A95E /* KeySongUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeySongUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A986E042AAAED0800F3A95E /* KeysocUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysocUITests.swift; sourceTree = "<group>"; };
 		9A986E062AAAED0800F3A95E /* KeysocUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysocUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9A986E132AAAEEDF00F3A95E /* settingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingViewController.swift; sourceTree = "<group>"; };
@@ -101,9 +101,9 @@
 		9A986DE12AAAED0700F3A95E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A986DE02AAAED0700F3A95E /* Keysoc.app */,
-				9A986DF62AAAED0800F3A95E /* KeysocTests.xctest */,
-				9A986E002AAAED0800F3A95E /* KeysocUITests.xctest */,
+				9A986DE02AAAED0700F3A95E /* KeySong.app */,
+				9A986DF62AAAED0800F3A95E /* KeySongTests.xctest */,
+				9A986E002AAAED0800F3A95E /* KeySongUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -154,9 +154,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9A986DDF2AAAED0700F3A95E /* Keysoc */ = {
+		9A986DDF2AAAED0700F3A95E /* KeySong */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9A986E0A2AAAED0800F3A95E /* Build configuration list for PBXNativeTarget "Keysoc" */;
+			buildConfigurationList = 9A986E0A2AAAED0800F3A95E /* Build configuration list for PBXNativeTarget "KeySong" */;
 			buildPhases = (
 				9A986DDC2AAAED0700F3A95E /* Sources */,
 				9A986DDD2AAAED0700F3A95E /* Frameworks */,
@@ -166,14 +166,14 @@
 			);
 			dependencies = (
 			);
-			name = Keysoc;
+			name = KeySong;
 			productName = Keysoc;
-			productReference = 9A986DE02AAAED0700F3A95E /* Keysoc.app */;
+			productReference = 9A986DE02AAAED0700F3A95E /* KeySong.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9A986DF52AAAED0800F3A95E /* KeysocTests */ = {
+		9A986DF52AAAED0800F3A95E /* KeySongTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9A986E0D2AAAED0800F3A95E /* Build configuration list for PBXNativeTarget "KeysocTests" */;
+			buildConfigurationList = 9A986E0D2AAAED0800F3A95E /* Build configuration list for PBXNativeTarget "KeySongTests" */;
 			buildPhases = (
 				9A986DF22AAAED0800F3A95E /* Sources */,
 				9A986DF32AAAED0800F3A95E /* Frameworks */,
@@ -184,14 +184,14 @@
 			dependencies = (
 				9A986DF82AAAED0800F3A95E /* PBXTargetDependency */,
 			);
-			name = KeysocTests;
+			name = KeySongTests;
 			productName = KeysocTests;
-			productReference = 9A986DF62AAAED0800F3A95E /* KeysocTests.xctest */;
+			productReference = 9A986DF62AAAED0800F3A95E /* KeySongTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		9A986DFF2AAAED0800F3A95E /* KeysocUITests */ = {
+		9A986DFF2AAAED0800F3A95E /* KeySongUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9A986E102AAAED0800F3A95E /* Build configuration list for PBXNativeTarget "KeysocUITests" */;
+			buildConfigurationList = 9A986E102AAAED0800F3A95E /* Build configuration list for PBXNativeTarget "KeySongUITests" */;
 			buildPhases = (
 				9A986DFC2AAAED0800F3A95E /* Sources */,
 				9A986DFD2AAAED0800F3A95E /* Frameworks */,
@@ -202,9 +202,9 @@
 			dependencies = (
 				9A986E022AAAED0800F3A95E /* PBXTargetDependency */,
 			);
-			name = KeysocUITests;
+			name = KeySongUITests;
 			productName = KeysocUITests;
-			productReference = 9A986E002AAAED0800F3A95E /* KeysocUITests.xctest */;
+			productReference = 9A986E002AAAED0800F3A95E /* KeySongUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -230,7 +230,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9A986DDB2AAAED0700F3A95E /* Build configuration list for PBXProject "Keysoc" */;
+			buildConfigurationList = 9A986DDB2AAAED0700F3A95E /* Build configuration list for PBXProject "KeySong" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -245,9 +245,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9A986DDF2AAAED0700F3A95E /* Keysoc */,
-				9A986DF52AAAED0800F3A95E /* KeysocTests */,
-				9A986DFF2AAAED0800F3A95E /* KeysocUITests */,
+				9A986DDF2AAAED0700F3A95E /* KeySong */,
+				9A986DF52AAAED0800F3A95E /* KeySongTests */,
+				9A986DFF2AAAED0800F3A95E /* KeySongUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -316,12 +316,12 @@
 /* Begin PBXTargetDependency section */
 		9A986DF82AAAED0800F3A95E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9A986DDF2AAAED0700F3A95E /* Keysoc */;
+			target = 9A986DDF2AAAED0700F3A95E /* KeySong */;
 			targetProxy = 9A986DF72AAAED0800F3A95E /* PBXContainerItemProxy */;
 		};
 		9A986E022AAAED0800F3A95E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9A986DDF2AAAED0700F3A95E /* Keysoc */;
+			target = 9A986DDF2AAAED0700F3A95E /* KeySong */;
 			targetProxy = 9A986E012AAAED0800F3A95E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -540,7 +540,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Keysoc.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Keysoc";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeySong.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KeySong";
 			};
 			name = Debug;
 		};
@@ -560,7 +560,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Keysoc.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Keysoc";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeySong.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KeySong";
 			};
 			name = Release;
 		};
@@ -603,7 +603,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9A986DDB2AAAED0700F3A95E /* Build configuration list for PBXProject "Keysoc" */ = {
+		9A986DDB2AAAED0700F3A95E /* Build configuration list for PBXProject "KeySong" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9A986E082AAAED0800F3A95E /* Debug */,
@@ -612,7 +612,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9A986E0A2AAAED0800F3A95E /* Build configuration list for PBXNativeTarget "Keysoc" */ = {
+		9A986E0A2AAAED0800F3A95E /* Build configuration list for PBXNativeTarget "KeySong" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9A986E0B2AAAED0800F3A95E /* Debug */,
@@ -621,7 +621,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9A986E0D2AAAED0800F3A95E /* Build configuration list for PBXNativeTarget "KeysocTests" */ = {
+		9A986E0D2AAAED0800F3A95E /* Build configuration list for PBXNativeTarget "KeySongTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9A986E0E2AAAED0800F3A95E /* Debug */,
@@ -630,7 +630,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9A986E102AAAED0800F3A95E /* Build configuration list for PBXNativeTarget "KeysocUITests" */ = {
+		9A986E102AAAED0800F3A95E /* Build configuration list for PBXNativeTarget "KeySongUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9A986E112AAAED0800F3A95E /* Debug */,
