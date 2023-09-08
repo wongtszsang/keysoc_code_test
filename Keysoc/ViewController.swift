@@ -13,7 +13,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var songArray: [songObject] = []
     
-    var currentPage = 0
+    var currentPage = -1
     var songPerPage = 20
 
     override func viewDidLoad() {
@@ -23,7 +23,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         
-        retrieveSongList()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -66,10 +65,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if(indexPath.row == songArray.count){
+            currentPage += 1
+            retrieveSongList()
+        }
+    }
+    
     func retrieveSongList(){
         guard let url = URL(string: "https://itunes.apple.com/search?term=jack+johnson&offset=\(currentPage * songPerPage)&limit=\(songPerPage)") else{
             return
         }
+        print(url)
         
 //        entity=allArtist&attribute=allArtistTerm
 
@@ -80,8 +87,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             do {
                 let decodedResponse = try JSONDecoder().decode(songJsonResult.self, from: data)
                 DispatchQueue.main.async {
-                    self.songArray = decodedResponse.results
-                    self.tableView.reloadData()
+                    self.songArray.append(contentsOf: decodedResponse.results)
+
+                    var indexPaths = [IndexPath]()
+                    for i in self.songArray.count-20...self.songArray.count - 1 {
+                        indexPaths.append(IndexPath(row: i, section: 0))
+                    }
+                    print(indexPaths)
+                    self.tableView.insertRows(at: indexPaths, with: .bottom)
+        
                 }
             } catch {
                 print("error: ", error)
