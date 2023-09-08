@@ -85,11 +85,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let cell = tableView.dequeueReusableCell(withIdentifier: "noResultCell", for: indexPath) as! customTableCellNoResult
             
             let language = Bundle.main.preferredLocalizations.first! as NSString
-            var noSongText = "No Favorite Song"
+            var noSongText = "No Result"
             if language == "zh-Hant" {
-                noSongText = "沒有歌曲"
+                noSongText = "沒有結果"
             } else if language == "zh-Hans" {
-                noSongText = "没有歌曲"
+                noSongText = "没有结果"
             }
             cell.label_noresult.text = noSongText
             return cell
