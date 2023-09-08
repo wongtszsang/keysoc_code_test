@@ -10,7 +10,6 @@ import UIKit
 protocol filterViewControllerDelegate
 {
     func confirmFilter(return_country : String)
-    func resetFilter()
 }
 
 
@@ -108,7 +107,6 @@ class customFilterTableCell: UITableViewCell {
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var imageview_checkmark: UIImageView!
-    
     
 }
 

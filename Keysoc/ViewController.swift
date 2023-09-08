@@ -38,6 +38,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         
+//        if let data = UserDefaults.standard.object(forKey: "favSong") as? Data,
+//           let temparray = try? JSONDecoder().decode([songObject].self, from: data) {
+//            favSong = temparray
+//        }
+//        if let temparray = userDefaults.object(forKey: "favSongID") as? [Int] {
+//            favSongID = temparray
+//        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         if let data = UserDefaults.standard.object(forKey: "favSong") as? Data,
            let temparray = try? JSONDecoder().decode([songObject].self, from: data) {
             favSong = temparray
@@ -45,14 +55,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if let temparray = userDefaults.object(forKey: "favSongID") as? [Int] {
             favSongID = temparray
         }
-        
-        print(favSong)
-        
-        print(favSongID)
+        tableView.reloadData()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        1
+        return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -114,6 +121,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     @IBAction func favButtonPressed(_ sender: UIButton) {
+        
         
         if let index = favSongID.firstIndex(of: songArray[sender.tag].trackId){
             favSong.remove(at: index)
@@ -179,7 +187,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("asdasdasdasdasdas search bar button clicked")
         retrieveMore = true
         keyword = searchBar.searchTextField.text ?? ""
         songArray.removeAll()
@@ -207,17 +214,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         currentPage = -1
         tableView.reloadData()
     }
-    func resetFilter() {
-        print("resetFilter")
-        selectedCountryCode = "US"
-//        country_Filter = country_All
-//        retrieveMore = true
-//        songArray = songArray
-//        tableView.reloadData()
-    }
-    
-    
-    
     
 }
 

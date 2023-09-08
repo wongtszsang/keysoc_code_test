@@ -14,6 +14,7 @@ class favViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var tableView: UITableView!
     
     var favSong: [songObject] = []
+    var favSongID: [Int] = []
     
     var retrieveMore = true
 
@@ -30,6 +31,9 @@ class favViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         if let data = UserDefaults.standard.object(forKey: "favSong") as? Data,
            let temparray = try? JSONDecoder().decode([songObject].self, from: data) {
             favSong = temparray
+        }
+        if let temparray = userDefaults.object(forKey: "favSongID") as? [Int] {
+            favSongID = temparray
         }
         tableView.reloadData()
     }
@@ -49,7 +53,7 @@ class favViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! customTableCell
         
-        cell.label_trackName.text = "\(favSong[indexPath.row].trackName ?? "")"
+        cell.label_trackName.text = "\(favSong[indexPath.row].trackName )"
         cell.label_artistName.text = "\(favSong[indexPath.row].artistName)"
         
         cell.imageview_thumbnail.downloadImage(link: favSong[indexPath.row].artworkUrl100, contentMode: .scaleAspectFit)
@@ -62,6 +66,33 @@ class favViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            
+            var title = "Confirm to remove song from your favorite list?"
+                        
+            let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
+
+            let deleteAction = UIAlertAction(title: "Confirm", style: .destructive) { action in
+
+                self.favSong.remove(at: indexPath.row)
+                self.favSongID.remove(at: indexPath.row)
+                    
+                if let encodedFavSong = try? JSONEncoder().encode(self.favSong) {
+                    self.userDefaults.set(encodedFavSong, forKey: "favSong")
+                }
+                self.userDefaults.set(self.favSongID, forKey: "favSongID")
+                tableView.deleteRows(at: [indexPath], with: .left)
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+
+            alert.addAction(deleteAction)
+            alert.addAction(cancelAction)
+            present(alert, animated: true, completion: nil)
+        }
+    }
 }
 
 
