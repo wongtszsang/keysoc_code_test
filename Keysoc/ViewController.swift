@@ -33,7 +33,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! customTableCell
         
-        cell.label_title.text = "\(songArray[indexPath.row].trackName)"
+        cell.label_trackName.text = "\(songArray[indexPath.row].trackName)"
+        cell.label_artistName.text = "\(songArray[indexPath.row].artistName)"
+        
+//        cell.cellImageView.image = UIImage(named: "placeholder")
+        cell.imageview_thumbnail.downloadImage(link: songArray[indexPath.row].artworkUrl100, contentMode: .scaleAspectFit)
+
         
         return cell
         
@@ -56,17 +61,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.songArray = decodedResponse.results
                     self.tableView.reloadData()
                 }
-            } catch let DecodingError.dataCorrupted(context) {
-                print(context)
-            } catch let DecodingError.keyNotFound(key, context) {
-                print("Key '\(key)' not found:", context.debugDescription)
-                print("codingPath:", context.codingPath)
-            } catch let DecodingError.valueNotFound(value, context) {
-                print("Value '\(value)' not found:", context.debugDescription)
-                print("codingPath:", context.codingPath)
-            } catch let DecodingError.typeMismatch(type, context)  {
-                print("Type '\(type)' mismatch:", context.debugDescription)
-                print("codingPath:", context.codingPath)
             } catch {
                 print("error: ", error)
             }
@@ -76,15 +70,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         task.resume()
     }
-
-
 }
 
 
 
 class customTableCell: UITableViewCell {
     
-    @IBOutlet weak var label_title: UILabel!
+    @IBOutlet weak var imageview_thumbnail: UIImageView!
+    @IBOutlet weak var label_trackName: UILabel!
+    @IBOutlet weak var label_artistName: UILabel!
     
 }
 
+extension UIImageView {
+    func downloadImage(link:String, contentMode: UIView.ContentMode) {
+        URLSession.shared.dataTask( with: NSURL(string:link)! as URL, completionHandler: {
+            (data, response, error) -> Void in
+            DispatchQueue.main.async {
+                self.contentMode =  contentMode
+                if let data = data { self.image = UIImage(data: data) }
+            }
+        }).resume()
+    }
+}
