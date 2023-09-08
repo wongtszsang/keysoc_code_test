@@ -39,18 +39,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         
-//        if let data = UserDefaults.standard.object(forKey: "favSong") as? Data,
-//           let temparray = try? JSONDecoder().decode([songObject].self, from: data) {
-//            favSong = temparray
-//        }
-//        if let temparray = userDefaults.object(forKey: "favSongID") as? [Int] {
-//            favSongID = temparray
-//        }
-        
+        // For removing useless top and bottom border
         searchBar.backgroundImage = UIImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        // Reload tableview when display
+        // the logic is moved to viewWillAppear to handle data refresh after tab switching
         if let data = UserDefaults.standard.object(forKey: "favSong") as? Data,
            let temparray = try? JSONDecoder().decode([songObject].self, from: data) {
             favSong = temparray
@@ -69,7 +64,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if(retrieveMore){
             return songArray.count + 1
         }
-        else {
+        else if songArray.count == 0 {
+            return 1
+        } else {
             return songArray.count
         }
             
@@ -84,7 +81,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if(indexPath.row < songArray.count){
+        if songArray.count == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "noResultCell", for: indexPath) as! customTableCellNoResult
+            
+            let language = Bundle.main.preferredLocalizations.first! as NSString
+            var noSongText = "No Favorite Song"
+            if language == "zh-Hant" {
+                noSongText = "沒有歌曲"
+            } else if language == "zh-Hans" {
+                noSongText = "没有歌曲"
+            }
+            cell.label_noresult.text = noSongText
+            return cell
+        } else if(indexPath.row < songArray.count){
             let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! customTableCell
             
             cell.label_trackName.text = "\(songArray[indexPath.row].trackName)"
@@ -189,7 +198,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         guard let url = URL(string: "https://itunes.apple.com/search?term=\(urlKeyword)&type=songs&media=\(selectedMedia.lowercased())&offset=\(currentPage * songPerPage)&limit=\(songPerPage)&country=\(selectedCountryCode)") else{
             return
         }
-        print(url)
 
         let task = URLSession.shared.dataTask(with: url) {
           (data, response, error) in
@@ -209,9 +217,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         self.tableView.insertRows(at: indexPaths, with: .bottom)
                     }
                     
+                    // Stop retriving when it reach the end
                     if(decodedResponse.results.count < self.songPerPage){
                         self.retrieveMore = false
-                        self.tableView.deleteRows(at: [IndexPath(row: self.songArray.count, section: 0)], with: .bottom)
+                        // remove last row
+                        if self.songArray.count > 0 {
+                            self.tableView.deleteRows(at: [IndexPath(row: self.songArray.count, section: 0)], with: .bottom)
+                        }
                     }
                 }
             } catch {
@@ -220,10 +232,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 return
             }
         }
-
         task.resume()
     }
-    
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         retrieveMore = true
@@ -232,6 +242,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } else {
             keyword = searchBar.text ?? ""
         }
+        // remove all previous result and perform search
         songArray.removeAll()
         currentPage = -1
         tableView.reloadData()
@@ -256,8 +267,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func confirmFilter(return_country: String, return_media: String) {
+        // set country and media type
         selectedCountryCode = return_country
         selectedMedia = return_media
+        
+        // remove all previous result and perform search
         songArray.removeAll()
         currentPage = -1
         tableView.reloadData()
