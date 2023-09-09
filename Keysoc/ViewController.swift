@@ -14,7 +14,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    
     @IBOutlet weak var view_loading: UIView!
+    @IBOutlet weak var view_loading_subview: UIView!
+    
     
     
     var songArray: [songObject] = []
@@ -43,6 +46,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // For removing useless top and bottom border
         searchBar.backgroundImage = UIImage()
         
+        view_loading_subview.layer.cornerRadius = 10
         view_loading.isHidden = true
     }
     
