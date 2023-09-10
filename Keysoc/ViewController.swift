@@ -18,7 +18,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var view_loading: UIView!
     @IBOutlet weak var view_loading_subview: UIView!
     
+    private let refreshControl = UIRefreshControl()
     
+    var isFetching = false
     
     var songArray: [songObject] = []
     
@@ -42,6 +44,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshList(_:)), for: .valueChanged)
         
         // For removing useless top and bottom border
         searchBar.backgroundImage = UIImage()
@@ -62,13 +66,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         tableView.reloadData()
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(retrieveMore){
+        if isFetching {
+            return 0
+        } else if retrieveMore{
             return songArray.count + 1
         }
         else if songArray.count == 0 {
@@ -124,7 +130,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             cell.button_fav.tag = indexPath.row
             
-    //        cell.imageview_thumbnail.image = UIImage(named: "placeholder")
+            cell.imageview_thumbnail.image = UIImage(named: "image_placeholder")
             cell.imageview_thumbnail.downloadImage(link: songArray[indexPath.row].artworkUrl100, contentMode: .scaleAspectFit)
 
             return cell
@@ -198,6 +204,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func retrieveSongList(){
         
         view_loading.isHidden = false
+        isFetching = true
+        tableView.reloadData()
         
         var urlKeyword = keyword
         if urlKeyword.isEmpty{
@@ -213,7 +221,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
           (data, response, error) in
 
         if let data = data {
-            
+            self.isFetching = false
             defer {
                 DispatchQueue.main.async {
                     self.view_loading.isHidden = true
@@ -231,6 +239,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                             indexPaths.append(IndexPath(row: i, section: 0))
                         }
                         self.tableView.reloadData()
+                        self.refreshControl.endRefreshing()
 //                        self.tableView.insertRows(at: indexPaths, with: .bottom)
                     }
                     
@@ -259,10 +268,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } else {
             keyword = searchBar.text ?? ""
         }
-        // remove all previous result and perform search
-        songArray.removeAll()
-        currentPage = -1
-        tableView.reloadData()
+        refreshData()
         if #available(iOS 13.0, *) {
             searchBar.searchTextField.resignFirstResponder()
         } else {
@@ -289,6 +295,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         selectedCountryCode = return_country
         selectedMedia = return_media
         
+        refreshData()
+    }
+    
+    @objc private func refreshList(_ sender: Any) {
+        refreshData()
+    }
+    
+    func refreshData(){
         // remove all previous result and perform search
         songArray.removeAll()
         currentPage = -1
